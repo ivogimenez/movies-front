@@ -11,7 +11,7 @@
   export default {
     methods: {
       seleccionarVista(vista) {
-        this.$emit('cambiar-vista', vista);
+        this.$emit('cambiarVista', vista);
       }
     }
   }
