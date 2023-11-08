@@ -14,7 +14,6 @@ export default {
     <DynamicViewContainer />
   </div>
   <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
   <RouterLink to="/movies">Movies</RouterLink>
 
   <RouterView />

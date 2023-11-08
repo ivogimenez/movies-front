@@ -1,6 +1,6 @@
 <script>
 import { storeToRefs } from "pinia";
-import { useMovieStore } from '../stores/movie'
+import { useMovieStore } from '../../stores/movie'
 
 export default {
   // components: { IonPage, IonContent },
