@@ -10,7 +10,7 @@
   export default {
     methods: {
       seleccionarVista(vista) {
-        this.$emit('cambiarVista', vista);
+        this.$emit('cambiar-vista', vista);
       }
     }
   }

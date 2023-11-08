@@ -1,6 +1,6 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import DynamicViewContainer from './views/DynamicViewContainer.vue';
+import DynamicViewContainer from './views/commons/DynamicViewContainer.vue';
 
 export default {
   components: {
