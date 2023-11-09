@@ -16,11 +16,9 @@ export default {
   <main>
     <h1>Movies View</h1>
 
-    {{ movieStore.movies[0].titulo }}
-    <!-- <ul>
-      <li v-for="movie in movieStore.movies" :key="movie.id">
-        {{ movie.titulo }}
-      </li>
-    </ul> -->
+    <div>
+      <h2>ACA LLAMAMOS A CADA COMPONENT en ./components/movies según la ruta que seleccione</h2>
+    </div>
+
   </main>
 </template>

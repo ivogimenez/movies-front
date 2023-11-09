@@ -19,7 +19,6 @@
     },
     methods: {
       cambiarVista(vista) {
-        console.log(`${vista.charAt(0).toUpperCase()}${vista.slice(1)}View`)
         this.vistaActual = `${vista.charAt(0).toUpperCase()}${vista.slice(1)}View`;
       }
     }
