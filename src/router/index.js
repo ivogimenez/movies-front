@@ -1,29 +1,24 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/commons/HomeView.vue'
-import UsuarioView from '../views/users/UsuarioView.vue'
-import MoviesView from '../views/movies/MoviesView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import IndexView from '../views/IndexView.vue';
+import HomeView from '../views/HomeView.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'index',
+    component: IndexView,
   },
   {
-    path: '/usuario',
-    name: 'usuario',
-    component: UsuarioView
+    path: '/home',
+    name: 'home-view', 
+    component: HomeView,
   },
-  {
-    path: '/movies',
-    name: 'movies',
-    component: MoviesView
-  }
-]
+
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes
-})
+});
 
-export default router
+export default router;

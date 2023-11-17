@@ -1,22 +1,24 @@
+<template>
+  <div id="app">
+    <header>
+      <nav class="primary-nav">
+        <router-link to="/home">Home</router-link>
+        <router-link to="/movies">Movies</router-link>
+        <router-link to="/user">User</router-link>
+      </nav>
+    </header>
+
+    <router-view />
+  </div>
+</template>
+
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import DynamicViewContainer from './views/commons/DynamicViewContainer.vue';
-
 export default {
-  components: {
-    DynamicViewContainer
-  }
+  
 }
 </script>
 
-<template>
-  <div id="app">
-    <DynamicViewContainer />
-  </div>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/movies">Movies</RouterLink>
+<style>
+</style>
 
-  <RouterView />
-</template>
-
-<style></style>
