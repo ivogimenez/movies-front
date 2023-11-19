@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div class="catalog">
 
 
-    <h1>Home Component</h1>
+    <h1>Catalog Component</h1>
     <p>Bienvenido a la página de inicio</p>
-    <button @click="mostrarHomeView">Mostrar HomeView</button>
+    <button @click="mostrarCatalogView">Mostrar CatalogView</button>
 
   </div>
 </template>
@@ -13,14 +13,10 @@
 import UserComponent from '../components/UserComponent.vue';
 
 export default {
-  name: "HomeView",
-  components: {
-    UserComponent,
-  },
+  name: "CatalogView",
   methods: {
-    mostrarHomeView() {
-      console.log('Mostrando HomeView');
-      this.$router.push({ name: 'home-view' }); // Esto tiene que redirigir al a ruta de la vista
+    mostrarCatalogView() {
+      console.log('Mostrando CatalogView');
     }
   }
 };

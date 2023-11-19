@@ -1,24 +1,19 @@
 <template>
-  <div id="app">
-    <!-- <header>
-      <nav class="primary-nav">
-        <router-link to="/home">Home</router-link>
-        <router-link to="/movies">Movies</router-link>
-        <router-link to="/user">User</router-link>
-      </nav>
-    </header> -->
-
-    <router-view />
-  </div>
+  <NavComponent />
+  <router-view />
 </template>
 
 <script>
 import { RouterLink, RouterView } from 'vue-router'
+import NavComponent from './components/NavComponent.vue';
+
 export default {
-  
+  name: "App",
+  components: {
+    NavComponent
+  }
 }
 </script>
 
-<style>
-</style>
+<style></style>
 
