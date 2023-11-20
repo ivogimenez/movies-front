@@ -20,6 +20,22 @@
                 </span>
             </router-link>
 
+
+            <router-link to="/profile" class="nav-link">
+                <span class="material-icons">
+                    person
+                </span>
+            </router-link>
+
+
+            <router-link to="/catalog" class="nav-link">
+                <span class="material-icons">
+                    video_library
+                </span>
+            </router-link>
+
+
+
         </div>
     </nav>
 </template>

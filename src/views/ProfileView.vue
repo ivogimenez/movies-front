@@ -2,6 +2,16 @@
   <div>
     <h1>User Component</h1>
 
+    <!-- Editar contraseña lo metemos acá -->
+
+    <!--  
+    Info del Profile
+        name:
+        lastName:
+        city:
+        country:
+        about: -->
+
     <!-- seccion de perfiles -->
     <div v-for="perfil in perfiles" :key="perfil.id" class="perfil">
       <!-- <img :src="perfil.avatar" :alt="perfil.nombre" class="avatar"> -->

@@ -45,6 +45,12 @@ export default {
             creatingAccount: false
         }
     },
+    props: {
+        user: {
+            type: Object,
+            required: true
+        }
+    },
     methods: {
         login() {
             console.log('login');

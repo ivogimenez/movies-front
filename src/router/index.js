@@ -23,9 +23,9 @@ const routes = [
     component: () => import('../views/HomeView.vue'),
   },
   {
-    path: '/profiles',
-    name: 'profiles-view',
-    component: () => import('../views/ProfilesView.vue'),
+    path: '/profile',
+    name: 'profile-view',
+    component: () => import('../views/ProfileView.vue'),
   },
   {
     path: '/catalog',

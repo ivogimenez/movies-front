@@ -6,3 +6,7 @@
 .nav-link {
     padding: 0.2rem 1rem;
 }
+
+#app {
+    background-color: rgba(238, 243, 254, 0.524)
+}
