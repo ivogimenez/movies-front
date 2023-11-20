@@ -3,35 +3,53 @@
         <div class="container justify-content-evenly">
 
             <router-link to="/" class="nav-link active" aria-current="page">
-                <span class="material-icons">
-                    home
-                </span>
+                <div class="icon-container">
+                    <span class="material-icons">
+                        home
+                    </span>
+                    <h6>Home</h6>
+                </div>
             </router-link>
 
             <router-link to="/movies" class="nav-link">
-                <span class="material-icons">
-                    movie
-                </span>
+                <div class="icon-container">
+
+                    <span class="material-icons">
+                        movie
+                    </span>
+                    <h6>Movies</h6>
+                </div>
             </router-link>
 
             <router-link to="/about" class="nav-link">
-                <span class="material-icons">
-                    info
-                </span>
+                <div class="icon-container">
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <h6>About</h6>
+                </div>
             </router-link>
 
 
             <router-link to="/profile" class="nav-link">
-                <span class="material-icons">
-                    person
-                </span>
+                <div class="icon-container">
+
+                    <span class="material-icons">
+                        person
+                    </span>
+                    <h6>Profile</h6>
+                </div>
             </router-link>
 
 
             <router-link to="/catalog" class="nav-link">
-                <span class="material-icons">
-                    video_library
-                </span>
+                <div class="icon-container">
+
+                    <span class="material-icons">
+                        video_library
+                    </span>
+                    <h6>Catalogo</h6>
+                </div>
             </router-link>
 
 
@@ -54,5 +72,10 @@ export default {
     padding: 0.3em;
     margin: 0.1em;
     border-radius: 50%;
+}
+
+.icon-container{
+    color: white;
+    text-align: center;
 }
 </style>

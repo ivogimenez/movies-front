@@ -1,8 +1,8 @@
 <template>
     <Carousel>
-        <Slide v-for="image in movies" :key="image">
+        <Slide v-for="movie in movies" :key="movie">
             <div class="carousel__item">
-                <img :src="image" alt="Slide Image">
+                <img :src="movie.img" alt="Slide movie">
             </div>
         </Slide>
 
@@ -30,9 +30,12 @@ export default defineComponent({
     data() {
         return {
             movies: [
-                '',
-                '',
-                '',
+                {
+                    img: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                },
+                {
+                    img:"https://image.tmdb.org/t/p/w500/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg"
+                }
                 // Add more image URLs as needed
             ],
         };
