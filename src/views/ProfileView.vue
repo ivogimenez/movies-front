@@ -1,77 +1,67 @@
 <template>
-  <div>
-    <h1>User Component</h1>
+  <div v-if="isLoggedIn" class="container mt-4">
+    <h1 class="mb-4">Perfil de usuario</h1>
 
-    <!-- Editar contraseña lo metemos acá -->
-
-    <!--  
-    Info del Profile
-        name:
-        lastName:
-        city:
-        country:
-        about: -->
-
-    <!-- seccion de perfiles -->
-    <div v-for="perfil in perfiles" :key="perfil.id" class="perfil">
-      <!-- <img :src="perfil.avatar" :alt="perfil.nombre" class="avatar"> -->
-      <div class="informacion">
-        <h2>{{ perfil.nombre }}</h2>
-        <p>{{ perfil.descripcion }}</p>
-      </div>
-    </div>
+    <!-- Resto del contenido del componente -->
+  </div>
+  <div v-else>
+    <p>Debes iniciar sesión para ver este contenido.</p>
   </div>
 </template>
 
 <script>
-import { storeToRefs } from "pinia";
-// import { useUserStore } from '../stores/user'
+import axios from 'axios';
 
 export default {
-  // components: { IonPage, IonContent },
-  setup() {
-    // const store = useUserStore();
-    // const { getUsers, getUsersLenght, addUser } = storeToRefs(store);
-    // return { getUsers, getUsersLenght, addUser };
-  },
+  name: 'ProfileComponent',
   data() {
     return {
-      perfiles: [
-        {
-          id: 1,
-          nombre: 'Kevin',
-          descripcion: 'Programador de front',
-          avatar: 'https://imgs.search.brave.com/vbyXOrh_C4_dUUKe-iHHnBe71yJ6cWZHDSy8MfUifI4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vaW1ncy5o/aXBlcnRleHR1YWwu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIzLzEwL3Rlcm1p/bmF0b3ItMi5qcGc_/Zml0PTEyMDAsNjc1/JnF1YWxpdHk9NTAm/c3RyaXA9YWxsJnNz/bD0x'
-        },
-        {
-          id: 2,
-          nombre: 'Ivo',
-          descripcion: 'Programador de back',
-          avatar: 'https://imgs.search.brave.com/vbyXOrh_C4_dUUKe-iHHnBe71yJ6cWZHDSy8MfUifI4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vaW1ncy5o/aXBlcnRleHR1YWwu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIzLzEwL3Rlcm1p/bmF0b3ItMi5qcGc_/Zml0PTEyMDAsNjc1/JnF1YWxpdHk9NTAm/c3RyaXA9YWxsJnNz/bD0x'
-        },
-      ]
+      isLoggedIn: false, // Ajusta esto según tu lógica de autenticación
+      user: {
+        // Datos del usuario
+      },
+      newPassword: '',
+      newDescription: '',
     };
-  }
-}
+  },
+  created() {
+    // Verificar la autenticación al crear el componente
+    this.checkAuthentication();
+  },
+  methods: {
+    async checkAuthentication() {
+      // Lógica para verificar la autenticación (puede variar según tu implementación)
+      // Por ejemplo, podrías hacer una solicitud a tu API para obtener información del usuario
+      try {
+        const response = await axios.get('URL_DE_TU_API/usuario'); // Reemplaza con la URL real de tu API
+        this.user = response.data;
+        this.isLoggedIn = true;
+      } catch (error) {
+        // Si hay un error al obtener la información del usuario, el usuario no está autenticado
+        console.error('Usuario no autenticado:', error);
+        this.isLoggedIn = false;
+      }
+    },
+    async changePassword() {
+      // Lógica para cambiar la contraseña
+      console.log(`Contraseña cambiada a: ${this.newPassword}`);
+      this.newPassword = '';
+    },
+    async updateDescription() {
+      // Lógica para actualizar la descripción
+      console.log(`Nueva Descripción: ${this.newDescription} para el perfil del usuario`);
+      this.newDescription = '';
+      // Aquí puedes realizar una solicitud para actualizar la descripción en la base de datos
+    },
+    async deleteDescription() {
+      // Lógica para eliminar la descripción
+      console.log('Descripción eliminada para el perfil del usuario');
+      // Aquí puedes realizar una solicitud para eliminar la descripción en la base de datos
+    },
+  },
+};
 </script>
 
-
-
-
-
-
-
 <style scoped>
-.perfil {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-}
+/* Agrega estilos adicionales si es necesario */
 </style>
