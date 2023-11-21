@@ -1,16 +1,20 @@
 <template>
-    <Carousel>
-        <Slide v-for="movie in movies" :key="movie">
-            <div class="carousel__item">
-                <img :src="movie.img" alt="Slide movie">
-            </div>
-        </Slide>
+    <div class="carousel">
 
-        <template #addons>
-            <Navigation />
-            <Pagination />
-        </template>
-    </Carousel>
+        <Carousel>
+            <Slide v-for="movie in movies" :key="movie">
+                <div class="carousel__item">
+                    <img :src="movie.img" alt="Slide movie">
+                </div>
+            </Slide>
+
+            <template #addons>
+                <Navigation />
+                <Pagination />
+            </template>
+        </Carousel>
+
+    </div>
 </template>
   
 <script>
@@ -34,8 +38,9 @@ export default defineComponent({
                     img: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
                 },
                 {
-                    img:"https://image.tmdb.org/t/p/w500/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg"
-                }
+                    img: "https://image.tmdb.org/t/p/w500/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg"
+                },
+
                 // Add more image URLs as needed
             ],
         };
@@ -47,8 +52,6 @@ export default defineComponent({
 .carousel__item {
     min-height: 400px;
     width: 90%;
-    background-color: rgba(0, 0, 0, 0.209);
-    color: var(--vc-clr-white);
     font-size: 20px;
     border-radius: 8px;
     display: flex;

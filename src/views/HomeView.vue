@@ -48,4 +48,7 @@ export default {
 .title {
   margin-top: 1em;
 }
+.CarouselComponent{
+  width: 92px;
+}
 </style>
