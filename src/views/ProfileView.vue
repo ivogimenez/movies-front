@@ -5,15 +5,19 @@
     <!-- Resto del contenido del componente -->
   </div>
   <div v-else>
-    <p>Debes iniciar sesión para ver este contenido.</p>
+    <LoginRequiredComponent />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import LoginRequiredComponent from '../components/LoginRequiredComponent.vue';
 
 export default {
   name: 'ProfileComponent',
+  components: {
+    LoginRequiredComponent,
+  },
   data() {
     return {
       isLoggedIn: false, // Ajusta esto según tu lógica de autenticación

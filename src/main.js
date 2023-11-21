@@ -4,6 +4,7 @@ import './assets/bootstrap.bundle.min.js'
 import './assets/custom_styles.css'
 import 'material-icons/iconfont/material-icons.css'
 
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
