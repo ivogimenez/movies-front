@@ -3,6 +3,23 @@
     <h1 class="mb-4">Perfil de usuario</h1>
 
     <!-- Resto del contenido del componente -->
+    <div>
+      <h2>Cambiar contraseña</h2>
+      <input type="password" v-model="newPassword" placeholder="Nueva Contraseña" />
+      <button @click="changePassword">Cambiar contraseña</button>
+    </div>
+
+    <div>
+      <h2>Actualizar Descripción</h2>
+      <input v-model="newDescription" placeholder="Nueva Descripción" />
+      <button @click="updateDescription">Actualizar Descripción</button>
+    </div>
+
+    <div>
+      <h2>Eliminar Descripción</h2>
+      <button @click="deleteDescription">Eliminar Descripción</button>
+    </div>
+
   </div>
   <div v-else>
     <LoginRequiredComponent />
@@ -51,10 +68,10 @@ export default {
         const response = await axios.post("aca va la URL/", {
         newPassword: this.newPassword,
         });
-        console.log(`La contrasena se modificó con éxito, nueva contrasena: ${this.newPassword}`, response.data);
+        console.log(`La contraseña se modificó con éxito, nueva contraseña: ${this.newPassword}`, response.data);
         this.newPassword = '';
       }catch(error){
-        console.error(`Error al modificar la contrasena:`, error);
+        console.error(`Error al modificar la contraseña:`, error);
       }
 
     },
