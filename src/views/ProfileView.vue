@@ -46,19 +46,36 @@ export default {
       }
     },
     async changePassword() {
-  
-      console.log(`Contraseña cambiada a: ${this.newPassword}`);
-      this.newPassword = '';
+
+      try{
+        const response = await axios.post("aca va la URL/", {
+        newPassword: this.newPassword,
+        });
+        console.log(`La contrasena se modificó con éxito, nueva contrasena: ${this.newPassword}`, response.data);
+        this.newPassword = '';
+      }catch(error){
+        console.error(`Error al modificar la contrasena:`, error);
+      }
+
     },
     async updateDescription() {
-  
+      try{
+        const response = await axios.post(`aca va la URL/`, {
+          newDescription: this.newDescription,
+        });
       console.log(`Nueva Descripción: ${this.newDescription} para el perfil del usuario`);
       this.newDescription = '';
-    
+      }catch(error){
+        console.error(`Error al actualizar la descripción:`, error);
+      }
     },
     async deleteDescription() {
-    
+    try{
+      const response = await axios.delete(`aca va la URL/`);
       console.log('Descripción eliminada para el perfil del usuario');
+    }catch(error){
+      console.error(`Error al eliminar la descripción:`, error);
+    }
    
     },
   },
