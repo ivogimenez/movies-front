@@ -100,7 +100,7 @@ export default {
                         }
                     })
                     this.setMovies(movs);
-                    console.log(this.retrieveMovies())
+                    this.$emit('movies-updated', movs);
                 })
                 .catch((error) => {
                     console.log(error);

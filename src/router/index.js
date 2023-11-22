@@ -7,12 +7,9 @@ const routes = [
     name: 'login-view',
     component: LoginView,
     beforeEnter: (to, from, next) => {
-      // Verifica si la cookie 'session' está presente
       if (VueCookies.get('session')) {
-        // Si está presente, redirige a /home
         next('/home');
       } else {
-        // Si no está presente, permite el acceso a la vista de login
         next();
       }
     },
@@ -27,12 +24,9 @@ const routes = [
     name: 'home-view',
     component: () => import('../views/HomeView.vue'),
     beforeEnter: (to, from, next) => {
-      // Verifica si la cookie 'session' está presente
       if (VueCookies.get('session')) {
-        // Si está presente, permite el acceso a la vista de home
         next();
       } else {
-        // Si no está presente, redirige a '/'
         next('/');
       }
     },
@@ -42,12 +36,9 @@ const routes = [
     name: 'profile-view',
     component: () => import('../views/ProfileView.vue'),
     beforeEnter: (to, from, next) => {
-      // Verifica si la cookie 'session' está presente
       if (VueCookies.get('session')) {
-        // Si está presente, permite el acceso a la vista de perfil
         next();
       } else {
-        // Si no está presente, redirige a '/'
         next('/');
       }
     },

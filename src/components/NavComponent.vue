@@ -39,7 +39,7 @@
           </div>
         </router-link>
   
-        <router-link to="/catalog" class="nav-link">
+        <!-- <router-link to="/catalog" class="nav-link">
           <div class="icon-container">
             <span class="material-icons">
               video_library
@@ -47,7 +47,7 @@
             <h6>Catalogo</h6>
           </div>
         </router-link>
-  
+   -->
       </div>
     </nav>
   </template>

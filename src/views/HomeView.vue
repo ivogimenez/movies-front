@@ -17,15 +17,14 @@
 
     </div>
 
+    <SearchComponent @movies-updated="getMoviesFromGlobalState" />
 
     <div class="row">
-      <div class="col">
-        <SearchComponent />
 
-        <div class="movies-container" v-for="movie in movies" :key="movie">
-          <MovieCardComponent id="0" title="this.movies[0].img" img="{{this.movies[0].img}}" />
 
-        </div>
+      <div class="col" v-for="movie in movies" :key="movie">
+        <MovieCardComponent :movie="movie" />
+
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 <template>
     <div class="movie-card">
         <div class="card" style="width: 13rem;">
-            <img src="{{img}}" class="card-img-top" alt="...">
+            <img class="card-img-top" :alt="title" :src="movie.img">
             <div class="card-body">
-                <h5 class="card-title"> {{ title }}</h5>
+                <h5 class="card-title"> {{ movie.title }}</h5>
             </div>
             <div class="btn-container d-grid gap-2">
                 <button class="btn btn-primary"> Agregar a favoritos</button>
@@ -17,7 +17,7 @@
 
 export default {
     name: "MovieCardComponent",
-    props: ['id', 'title', 'poster_path']
+    props: ['movie']
 }   
 </script>
 
