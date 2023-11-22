@@ -98,7 +98,6 @@ export default {
         },
         login() {
             if (!this.isLoginFormValid) {
-
                 alert("Por favor, completa tanto el nombre de usuario como la contraseña.");
                 return;
             }

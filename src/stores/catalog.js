@@ -12,14 +12,14 @@ export const useCatalogStore = defineStore('catalog', {
   actions: {
     addToCatalog(movie) {
       this.catalog.push(movie);
-      console.log(this.catalog);
+      console.log('Pelicula agregada',this.catalog);
     },
     removeToCatalog(movie) {
       const indexToRemove = this.catalog.findIndex(item => item.id === movie.id);
 
       if (indexToRemove !== -1) {
-        this.catalog.splice(indexToRemove);
-        console.log('Película eliminada del catálogo.');
+        this.catalog.splice(indexToRemove, 1);
+        console.log('Pelicula eliminada',this.catalog);
       } else {
         console.log('No se encontró ninguna película con el id proporcionado en el catálogo.');
       }

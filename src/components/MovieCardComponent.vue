@@ -6,8 +6,8 @@
                 <h5 class="card-title"> {{ movie.title }}</h5>
             </div>
             <div class="btn-container d-grid gap-2">
-                <button class="btn btn-primary" @click="addToCatalog(movie)"> Agregar a favoritos</button>
-                <button class="btn btn-danger" @click="removeToCatalog(movie)"> Eliminar de favoritos</button>
+                <button class="btn btn-primary"  v-if="!movieIsInCatalog(movie)" @click="addToCatalog(movie)"> Agregar a favoritos</button>
+                <button class="btn btn-danger" v-if="movieIsInCatalog(movie)" @click="removeToCatalog(movie)"> Eliminar de favoritos</button>
             </div>
         </div>
     </div>
@@ -35,7 +35,10 @@ export default {
     methods: {
         getCatalogFromGlobalState() {
             this.catalog = useCatalogStore().catalog;
-        }
+        },
+        movieIsInCatalog(movie) {
+            return this.catalog.some((movieInCatalog) => movieInCatalog.id === movie.id);
+        },
     }
 }   
 </script>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
 
-        <h1 class="title"> Nuestra peliculas mejor puntuadas</h1>
+        <h1 class="title">Nuestras peliculas mejor puntuadas</h1>
         <CarouselComponent />
       </div>
 

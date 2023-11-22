@@ -32,9 +32,9 @@ const routes = [
     },
   },
   {
-    path: '/movies',
-    name: 'movies-view',
-    component: () => import('../views/MoviesView.vue'),
+    path: '/catalog',
+    name: 'catalog-view',
+    component: () => import('../views/CatalogView.vue'),
     beforeEnter: (to, from, next) => {
       if (VueCookies.get('session')) {
         next();
