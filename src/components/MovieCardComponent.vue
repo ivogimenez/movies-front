@@ -6,18 +6,37 @@
                 <h5 class="card-title"> {{ movie.title }}</h5>
             </div>
             <div class="btn-container d-grid gap-2">
-                <button class="btn btn-primary"> Agregar a favoritos</button>
-                <button class="btn btn-danger"> Eliminar de favoritos</button>
+                <button class="btn btn-primary" @click="addToCatalog(movie)"> Agregar a favoritos</button>
+                <button class="btn btn-danger" @click="removeToCatalog(movie)"> Eliminar de favoritos</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { useCatalogStore } from '../stores/catalog';
 
 export default {
     name: "MovieCardComponent",
-    props: ['movie']
+    setup() {
+        const catalogStore = useCatalogStore();
+        const { addToCatalog, removeToCatalog, retrieveCatalog } = catalogStore;
+        return { addToCatalog, removeToCatalog, retrieveCatalog };
+    },
+    props: ['movie'],
+    data() {
+        return {
+            catalog: this.retrieveCatalog(),
+        };
+    }, mounted() {
+        // Realiza la solicitud para obtener las categorías al montar el componente
+        this.getCatalogFromGlobalState();
+    },
+    methods: {
+        getCatalogFromGlobalState() {
+            this.catalog = useCatalogStore().catalog;
+        }
+    }
 }   
 </script>
 
@@ -31,6 +50,7 @@ export default {
 .card-title {
     text-align: center;
 }
+
 .movie-card {
     margin-top: 1.5em;
 }

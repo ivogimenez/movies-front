@@ -36,13 +36,16 @@ import CarouselComponent from '../components/CarouselComponent.vue';
 import SearchComponent from '../components/SearchComponent.vue';
 import MovieCardComponent from '../components/MovieCardComponent.vue';
 import { useMovieStore } from '../stores/movie';
+import { useCatalogStore } from '../stores/catalog';
 
 export default {
   name: "HomeView",
   setup() {
-    const store = useMovieStore();
-    const { setMovies, retrieveMovies } = store
-    return { setMovies, retrieveMovies };
+    const movieStore = useMovieStore();
+    const { setMovies, retrieveMovies } = movieStore;
+    const catalogStore = useCatalogStore();
+    const { addToCatalog, removeToCatalog, retrieveCatalog } = catalogStore;
+    return { setMovies, retrieveMovies, addToCatalog, removeToCatalog, retrieveCatalog };
   },
   components: {
     CarouselComponent,
