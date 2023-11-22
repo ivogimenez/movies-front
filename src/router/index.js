@@ -32,9 +32,9 @@ const routes = [
     },
   },
   {
-    path: '/profile',
-    name: 'profile-view',
-    component: () => import('../views/ProfileView.vue'),
+    path: '/movies',
+    name: 'movies-view',
+    component: () => import('../views/MoviesView.vue'),
     beforeEnter: (to, from, next) => {
       if (VueCookies.get('session')) {
         next();
@@ -42,7 +42,7 @@ const routes = [
         next('/');
       }
     },
-  },
+  }
 ];
 
 const router = createRouter({
