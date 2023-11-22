@@ -21,8 +21,11 @@
     <div class="row">
       <div class="col">
         <SearchComponent />
-        {{ movies }}
-        <MovieCardComponent />
+
+        <div class="movies-container" v-for="movie in movies" :key="movie">
+          <MovieCardComponent id="0" title="this.movies[0].img" img="{{this.movies[0].img}}" />
+
+        </div>
       </div>
     </div>
   </div>

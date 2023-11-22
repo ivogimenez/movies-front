@@ -58,6 +58,7 @@ export default {
     mounted() {
         // Realiza la solicitud para obtener las categorías al montar el componente
         this.fetchCategories();
+        this.searchMoviesWithFilters();
     },
     methods: {
         async fetchCategories() {

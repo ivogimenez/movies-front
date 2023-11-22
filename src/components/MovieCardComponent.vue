@@ -1,9 +1,9 @@
 <template>
     <div class="movie-card">
         <div class="card" style="width: 13rem;">
-            <img src="../assets/img/moviesdb.png" class="card-img-top" alt="...">
+            <img src="{{img}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Some quick</h5>
+                <h5 class="card-title"> {{ title }}</h5>
             </div>
             <div class="btn-container d-grid gap-2">
                 <button class="btn btn-primary"> Agregar a favoritos</button>
