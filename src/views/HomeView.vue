@@ -21,6 +21,8 @@
     <div class="row">
       <div class="col">
         <SearchComponent />
+        {{ movies }}
+        <MovieCardComponent />
       </div>
     </div>
   </div>
@@ -30,11 +32,35 @@
 
 import CarouselComponent from '../components/CarouselComponent.vue';
 import SearchComponent from '../components/SearchComponent.vue';
+import MovieCardComponent from '../components/MovieCardComponent.vue';
+import { useMovieStore } from '../stores/movie';
 
 export default {
+  name: "HomeView",
+  setup() {
+    const store = useMovieStore();
+    const { setMovies, retrieveMovies } = store
+    return { setMovies, retrieveMovies };
+  },
   components: {
     CarouselComponent,
-    SearchComponent
+    SearchComponent,
+    MovieCardComponent
+
+  }, data() {
+    return {
+      movies: this.retrieveMovies(),
+    };
+  }, mounted() {
+    // Realiza la solicitud para obtener las categorías al montar el componente
+    this.getMoviesFromGlobalState();
+  },
+  methods: {
+    // Ejemplo de cómo acceder a las películas desde otro componente
+    getMoviesFromGlobalState() {
+      this.movies = useMovieStore().movies;
+      // Hacer algo con las películas
+    }
   }
 }
 </script>
@@ -47,8 +73,5 @@ export default {
 
 .title {
   margin-top: 1em;
-}
-.CarouselComponent{
-  width: 92px;
 }
 </style>

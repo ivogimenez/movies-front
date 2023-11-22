@@ -47,7 +47,6 @@ export default defineComponent({
     },
     methods: {
         async fetchMovies() {
-            console.log(this.TMBD_API_KEY, this.TMBD_API_URL)
             try {
                 let config = {
                     method: 'get',

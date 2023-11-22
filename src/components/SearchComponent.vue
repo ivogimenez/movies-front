@@ -26,24 +26,33 @@
                 </li>
             </ul>
         </div>
-        <form class="d-flex search-input">
-            <input class="form-control me-2" type="search" placeholder="Ingresá el titulo de una pelicula" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <form class="d-flex search-input" @submit.prevent>
+            <input class="form-control me-2" type="search" placeholder="Ingresá el titulo de una pelicula"
+                aria-label="Search">
+            <button class="btn btn-outline-success" @click.prevent="searchMoviesWithFilters">Buscar</button>
         </form>
     </div>
 </template>
   
 <script>
 import axios from 'axios';
+import _ from 'lodash';
+import { useMovieStore } from '../stores/movie';
 
 export default {
     name: 'SearchComponent',
+    setup() {
+        const store = useMovieStore();
+        const { setMovies, retrieveMovies } = store
+        return { setMovies, retrieveMovies };
+    },
     data() {
         return {
             categories: [],
             selectedFilters: [],
-            TMBD_API_KEY: import.meta.env.VITE_TMBD_API_KEY,
             TMBD_API_URL: import.meta.env.VITE_TMBD_API_URL,
+            TMBD_API_KEY: import.meta.env.VITE_TMBD_API_KEY,
+            TMBD_IGM_BASE_URL: import.meta.env.VITE_TMBD_IGM_BASE_URL,
         };
     },
     mounted() {
@@ -52,7 +61,7 @@ export default {
     },
     methods: {
         async fetchCategories() {
-            console.log(this.TMBD_API_KEY, this.TMBD_API_URL)
+
             try {
                 let config = {
                     method: 'get',
@@ -60,19 +69,42 @@ export default {
                     url: `${this.TMBD_API_URL}/genre/movie/list?language=es&api_key=${this.TMBD_API_KEY}`,
                     headers: {}
                 };
-
-                console.log(JSON.stringify(config))
                 const response = await axios.request(config)
-                console.log(JSON.stringify(response.data.genres))
                 this.categories = response.data.genres;
             } catch (error) {
                 console.error('Error al obtener las categorías:', error);
             }
         },
-        applyFilters() {
-            // Aquí puedes manejar la lógica para aplicar los filtros seleccionados
-            console.log('Categorias :', this.categories);
-            console.log('Filtros seleccionados:', this.selectedFilters);
+        searchMoviesWithFilters() {
+            let genresIds = _.map(this.selectedFilters, (genre) => _.values(_.pick(genre, "id")));
+            let genresjoined = _.join(genresIds)
+
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `${this.TMBD_API_URL}/discover/movie?with_genres=${genresjoined}&sort_by=popularity.desc&language=es-MX&page=1&api_key=${this.TMBD_API_KEY}`,
+                headers: {}
+            };
+
+            return axios.request(config)
+                .then(({ data }) => {
+                    const movs = _.map(data.results, movie => {
+                        const mov = _.pick(movie, ['poster_path', 'title', 'id'])
+
+
+                        return {
+                            id: mov.id,
+                            title: mov.title,
+                            img: `${this.TMBD_IGM_BASE_URL}${mov.poster_path}`
+                        }
+                    })
+                    this.setMovies(movs);
+                    console.log(this.retrieveMovies())
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
         },
         clearFilters() {
             // Limpia los filtros y deselecciona los checkboxes
