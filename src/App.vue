@@ -1,22 +1,26 @@
+<template>
+  <NavComponent />
+  <router-view class="router-view" />
+  <FooterComponent />
+</template>
+
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import DynamicViewContainer from './views/DynamicViewContainer.vue';
+import NavComponent from './components/NavComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
 
 export default {
+  name: "App",
   components: {
-    DynamicViewContainer
+    NavComponent,
+    FooterComponent
   }
 }
 </script>
 
-<template>
-  <div id="app">
-    <DynamicViewContainer />
-  </div>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/movies">Movies</RouterLink>
+<style>
+.router-view{
+  min-height: 70vh;
+}
+</style>
 
-  <RouterView />
-</template>
-
-<style></style>

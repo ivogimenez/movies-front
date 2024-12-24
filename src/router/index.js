@@ -1,29 +1,53 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import UsuarioView from '../views/users/UsuarioView.vue'
-import MoviesView from '../views/movies/MoviesView.vue'
-
+import { createRouter, createWebHistory } from 'vue-router';
+import LoginView from '../views/LoginView.vue';
+import VueCookies from 'vue-cookies';
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login-view',
+    component: LoginView,
+    beforeEnter: (to, from, next) => {
+      if (VueCookies.get('session')) {
+        next('/home');
+      } else {
+        next();
+      }
+    },
   },
   {
-    path: '/usuario',
-    name: 'usuario',
-    component: UsuarioView
+    path: '/about',
+    name: 'about-view',
+    component: () => import('../views/AboutView.vue'),
   },
   {
-    path: '/movies',
-    name: 'movies',
-    component: MoviesView
+    path: '/home',
+    name: 'home-view',
+    component: () => import('../views/HomeView.vue'),
+    beforeEnter: (to, from, next) => {
+      if (VueCookies.get('session')) {
+        next();
+      } else {
+        next('/');
+      }
+    },
+  },
+  {
+    path: '/catalog',
+    name: 'catalog-view',
+    component: () => import('../views/CatalogView.vue'),
+    beforeEnter: (to, from, next) => {
+      if (VueCookies.get('session')) {
+        next();
+      } else {
+        next('/');
+      }
+    },
   }
-]
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
-export default router
+export default router;
